@@ -6,3 +6,29 @@ Fri May  8 10:07:21 PM UTC 2026:
  tests:  0|6
 ========================================
 36e8bf5
+Thu May 14 08:31:58 PM UTC 2026: 
+ graph.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getWeight’:
+graph.c:52:48: error: passing argument 2 of ‘map_search’ discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+   52 |     MapPair *par = map_search(g->adjacencyMap, label1);
+      |                                                ^~~~~~
+In file included from graph.c:8:
+map.h:22:37: note: expected ‘void *’ but argument is of type ‘const char *’
+   22 | MapPair *map_search(Map *map, void *key);
+      |                               ~~~~~~^~~
+graph.c:53:31: error: expected ‘;’ before ‘Edge’
+   53 |     if (par == NULL) return -1
+      |                               ^
+      |                               ;
+   54 | 
+   55 |     Edge *aux = list_first(par->value);
+      |     ~~~~                       
+graph.c:56:11: error: ‘aux’ undeclared (first use in this function)
+   56 |     while(aux != NULL) {
+      |           ^~~
+graph.c:56:11: note: each undeclared identifier is reported only once for each function it appears in
+cc1: all warnings being treated as errors
+dc637bc
