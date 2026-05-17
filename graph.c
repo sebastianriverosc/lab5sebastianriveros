@@ -106,7 +106,7 @@ List* getAdjacentLabels(Graph* g, const char* label) {
     Edge* i = (Edge*)list_first(ls);
     // Itere sobre las aristas y agregue únicamente el campo target de cada arista a esta          nueva lista.
     while (i != NULL) {
-        list_pushBack(newList, (void*)i->target);
+        list_pushBack(newList, i->target);
         i = (Edge*)list_next(ls);
     }
     // Retorne la nueva lista.
