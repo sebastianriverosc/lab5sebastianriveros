@@ -100,9 +100,13 @@ List* getAdjacentLabels(Graph* g, const char* label) {
 
     // Obtenga la lista de aristas (estructuras Edge*) del nodo label.
     MapPair* par = map_search(g->adjacencyMap, (void*)label);
+    if (par == NULL) return NULL;
+    
     List* ls = (List*)par->value;
+    if (ls == NULL) return NULL;
     // Cree una nueva Lista (list_create()).
     List* newList = list_create();
+    if (newList == NULL) return NULL;
     Edge* i = (Edge*)list_first(ls);
     // Itere sobre las aristas y agregue únicamente el campo target de cada arista a esta          nueva lista.
     while (i != NULL) {
