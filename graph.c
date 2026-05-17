@@ -54,13 +54,21 @@ void addNode(Graph* g, const char* label) {
 
 void addEdge(Graph* g, const char* src, const char* dest, int weight) {
     if (!g || !src || !dest) return;
+    // Debe buscar en el mapa la lista de aristas asociada al nodo origen (src). 
+    // Si el nodo origen no existe, la función termina.
+    //MapPair* par = map_search(g->adjacencyMap, (void*)src);
+    //if (par == NULL) return;
+    
 
 }
 
 List* getEdges(Graph* g, const char* label) {
     if (!g || !label) return NULL;
 
-    return NULL;
+    // Implemente la función getEdges(Graph* g, const char* label) Busca un nodo en el mapa a partir de su label y retorna un puntero a la Lista de aristas (Edge*) que salen de él. Si el nodo no existe en el grafo, debe retornar NULL.
+    MapPair* par = map_search(g->adjacencyMap, (void*)label);
+    if (par == NULL) return NULL;
+    return par->value;
 }
 
 int getWeight(Graph* g, const char* label1, const char* label2) {
