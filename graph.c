@@ -42,7 +42,7 @@ Graph* createGraph() {
 void addNode(Graph* g, const char* label) {
     if (!g || !label) return;
     
-    MapPair *par = map_search(g->adjacencyMap, label);
+    MapPair* par = map_search(g->adjacencyMap, (void*)label);
     if (par != NULL) return;
     else {
         char* newLabel = strdup(label);
