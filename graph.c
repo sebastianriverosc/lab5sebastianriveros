@@ -56,8 +56,17 @@ void addEdge(Graph* g, const char* src, const char* dest, int weight) {
     if (!g || !src || !dest) return;
     // Debe buscar en el mapa la lista de aristas asociada al nodo origen (src). 
     // Si el nodo origen no existe, la función termina.
-    //MapPair* par = map_search(g->adjacencyMap, (void*)src);
-    //if (par == NULL) return;
+    MapPair* par = map_search(g->adjacencyMap, (void*)src);
+    if (par == NULL) return;
+    // Si existe, debe reservar memoria para una nueva estructura Edge.
+    Edge* arista = (Edge*) malloc(sizeof(Edge));
+    if (arista == NULL) return;
+    // A este nuevo Edge, asígnele el weight y una copia del string dest 
+    // (en el campo target).
+    arista->weight = weight;
+    strcpy(arista->target, dest);
+    // Finalmente, agregue este nuevo Edge a la lista de adyacencia del nodo src.
+    list_pushBack(par->value, arista);
     
 
 }
@@ -65,7 +74,6 @@ void addEdge(Graph* g, const char* src, const char* dest, int weight) {
 List* getEdges(Graph* g, const char* label) {
     if (!g || !label) return NULL;
 
-    // Implemente la función getEdges(Graph* g, const char* label) Busca un nodo en el mapa a partir de su label y retorna un puntero a la Lista de aristas (Edge*) que salen de él. Si el nodo no existe en el grafo, debe retornar NULL.
     MapPair* par = map_search(g->adjacencyMap, (void*)label);
     if (par == NULL) return NULL;
     return par->value;
