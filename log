@@ -103,3 +103,24 @@ Sun May 17 06:45:46 AM UTC 2026:
  1 file changed, 4 insertions(+), 1 deletion(-)
  tests:  0|0
 746628d
+Sun May 17 06:58:37 AM UTC 2026: 
+ graph.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘addNode’:
+graph.c:45:48: error: passing argument 2 of ‘map_search’ discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+   45 |     MapPair *par = map_search(g->adjacencyMap, label);
+      |                                                ^~~~~
+In file included from graph.c:8:
+map.h:22:37: note: expected ‘void *’ but argument is of type ‘const char *’
+   22 | MapPair *map_search(Map *map, void *key);
+      |                               ~~~~~~^~~
+graph.c:50:47: error: expected expression before ‘void’
+   50 |         map_insert(g->adjacencyMap, newLabel, void *ls);
+      |                                               ^~~~
+graph.c:49:15: error: unused variable ‘ls’ [-Werror=unused-variable]
+   49 |         List* ls = list_create();
+      |               ^~
+cc1: all warnings being treated as errors
+fbb874a
