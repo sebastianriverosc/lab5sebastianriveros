@@ -32,6 +32,7 @@ Graph* createGraph() {
     if (g == NULL) return NULL;
     // 2. Inicialice g->adjacencyMap
     g->adjacencyMap = map_create(is_equal_string);
+    if (g->adjacencyMap == NULL) return NULL;
     // 3. Retorne el grafo
     return g;
 }
