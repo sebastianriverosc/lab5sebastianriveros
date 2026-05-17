@@ -67,8 +67,7 @@ void addEdge(Graph* g, const char* src, const char* dest, int weight) {
     strcpy(arista->target, dest);
     // Finalmente, agregue este nuevo Edge a la lista de adyacencia del nodo src.
     list_pushBack(par->value, arista);
-    
-
+    return;
 }
 
 List* getEdges(Graph* g, const char* label) {
